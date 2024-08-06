@@ -1,0 +1,173 @@
+---
+const items = [
+  {
+    institution: "Model Engineering College, Thrikkakara",
+    degree: "B.Tech in Computer Science and Engineering",
+    duration: "2021-2025",
+  },
+  {
+    institution: "St Antony's Public School, Kanjirapally",
+    degree: "AISSCE",
+    duration: "2019-2021",
+    percentage: "95.2%",
+  },
+  {
+    institution: "St Peter's Senior Secondary School, Kadayiruppu",
+    degree: "AISSE",
+    duration: "2018-2019",
+    percentage: "96.6%",
+  },
+];
+---
+
+<section class="education-timeline">
+  <h2>Education</h2>
+  <div class="timeline">
+    {items.map((item, index) => (
+      <div class={`timeline-item ${index % 2 === 0 ? "left" : "right"}`} key={index}>
+        <div class="content">
+          <h3>{item.institution}</h3>
+          <p><strong>{item.degree}</strong></p>
+          <p><em>{item.duration}</em></p>
+          {item.percentage && (
+            <p class="percentage">Percentage: {item.percentage}</p>
+          )}
+        </div>
+      </div>
+    ))}
+    <div class="timeline-line"></div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --accent-light: #c561f6;
+    --accent-regular: #7611a6;
+    --accent-dark: #1c0056;
+    --accent-overlay: hsla(280, 89%, 67%, 0.33);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent-light: #c561f6;
+      --accent-regular: #ffffff;
+      --accent-dark: #ffffff;
+      --accent-overlay: #ffffff;
+    }
+  }
+
+  .education-timeline {
+    padding: 2rem 0;
+    background-color: var(--accent-overlay);
+  }
+
+  .education-timeline h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #8f34bc;
+  }
+
+  .timeline {
+    position: relative;
+    margin: 0 auto;
+    padding: 2rem 0;
+    max-width: 800px;
+  }
+
+  .timeline-line {
+    position: absolute;
+    width: 4px;
+    background-color: var(--accent-regular);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin: 2rem 0;
+    padding-left: 4rem;
+    width: 50%;
+  }
+
+  .timeline-item.left {
+    left: 0;
+    text-align: right;
+    padding-right: 4rem;
+    padding-left: 0;
+  }
+
+  .timeline-item.right {
+    left: 50%;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--accent-regular);
+    box-shadow: 0 0 0 3px #fff;
+    z-index: 1;
+  }
+
+  .timeline-item.left::before {
+    right: -7.5px;
+  }
+
+  .timeline-item.right::before {
+    left: -7.5px;
+  }
+
+  .content {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .content h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: var(--accent-regular);
+  }
+
+  .content p {
+    margin: 0.5rem 0;
+    color: var(--accent-dark);
+  }
+
+  .content .percentage {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: var(--accent-regular);
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item {
+      width: 100%;
+      padding-left: 2rem;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+      left: 0;
+      text-align: left;
+      padding-right: 0;
+      padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+      left: -8px;
+    }
+
+    .timeline-line {
+      left: 20px;
+    }
+  }
+</style>

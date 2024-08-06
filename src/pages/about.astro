@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import ContactCTA from "../components/ContactCTA.astro";
+import Education from "../components/Education.astro";
+import Hero from "../components/Hero.astro";
+import Positions from "../components/Positions.astro";
+
+---
+
+<BaseLayout
+  title="About | Arpitha Sudhir"
+  description="About Arpitha Sudhir"
+>
+  <div class="stack gap-20">
+    <main class="wrapper about">
+      <!-- <Hero
+				title="About"
+				tagline="Hi check out my About me page"
+			>
+				<img
+					width="1553"
+					height="873"
+					src="/assets/at-work.jpg"
+					alt="Arpitha Sudhir"
+				/>
+			</Hero> -->
+
+      <section>
+        <h2 class="section-title">Background</h2>
+        <div class="content">
+          <p>
+            I'm a final year Computer Science student with a passion for web and app development, particularly with Flutter. 
+            This portfolio showcases my journey, skills, and projects, reflecting my dedication to creating scalable and innovative solutions. 
+            Whether it's building apps or websites, collaborating with teams, or diving into the nuances of coding, I strive to blend creativity with technical expertise.
+             Explore my work and get to know more about my contributions and growth in the world of technology.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Education</h2>
+        <div class="content">
+          <Education />
+        </div>
+        <h2 class="section-title">Positions of Responsibilty</h2>
+        <div class="content">
+          <Positions />
+        </div>
+        
+        <div class="content">
+          
+        </div>
+      </section>
+    </main>
+
+    <ContactCTA />
+  </div>
+</BaseLayout>
+
+<style>
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  div .content p {
+    font-size: var(--text-lg);
+    color: var(--gray-200);
+    text-align: justify;
+  }
+  img {
+    margin-top: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--gray-200);
+  }
+
+  .section-title {
+    grid-column-start: 1;
+    font-size: var(--text-xl);
+    color: var(--gray-0);
+  }
+
+  .content {
+    grid-column: 2 / 4;
+  }
+
+  .content :global(a) {
+    text-decoration: 1px solid underline transparent;
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color var(--theme-transition);
+  }
+
+  .content :global(a:hover),
+  .content :global(a:focus) {
+    text-decoration-color: currentColor;
+  }
+
+  @media (min-width: 50em) {
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 60% 1fr;
+    }
+
+    .about > :global(:first-child) {
+      grid-column-start: 2;
+    }
+
+    section {
+      display: contents;
+      font-size: var(--text-lg);
+    }
+  }
+</style>

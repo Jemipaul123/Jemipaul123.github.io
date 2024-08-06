@@ -1,0 +1,152 @@
+---
+const items = [
+  {
+    position: "Outreach Lead",
+    at: "TLE MEC",
+    description: "The competitive coding and DSA club",
+    duration: "2023-25",
+  },
+  {
+    position: "Events Lead",
+    at: "NSDC MEC",
+    description: "The Data Science club",
+    duration: "2023-24",
+  },
+];
+---
+
+<section class="positions-section">
+  <h2>Positions Held</h2>
+  <div class="timeline">
+    {items.map((item, index) => (
+      <div class={`timeline-item ${index % 2 === 0 ? "left" : "right"}`} key={item.position}>
+        <div class="timeline-icon"></div>
+        <div class="timeline-content">
+          <h3>{item.position}</h3>
+          <p class="at">{item.at}</p>
+          <p class="description">{item.description}</p>
+          <span class="duration">{item.duration}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  :root {
+    --primary-bg: #e0e0e0;
+    --primary-border: #b3b3b3;
+    --primary-text: #333333;
+    --secondary-bg: #ffffff;
+    --secondary-border: #c561f6;
+    --secondary-text: #1c0056;
+  }
+
+  .positions-section {
+    padding: 2rem;
+    background-color: var(--primary-bg);
+    border-radius: 1rem;
+    margin-top: 2rem;
+  }
+
+  .positions-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: var(--secondary-text);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid var(--primary-border);
+    border-radius: 0.5rem;
+    background-color: var(--secondary-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline-item.left {
+    margin-left: 2rem;
+  }
+
+  .timeline-item.right {
+    margin-right: 2rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--secondary-border);
+    transform: translateY(-50%);
+  }
+
+  .timeline-item.left::before {
+    left: -5px;
+  }
+
+  .timeline-item.right::before {
+    right: -5px;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+    color: var(--primary-text);
+  }
+
+  .timeline-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+  }
+
+  .timeline-content .at {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--secondary-border);
+  }
+
+  .timeline-content .description {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: var(--primary-text);
+  }
+
+  .timeline-content .duration {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--primary-border);
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item {
+      margin: 1rem 0;
+      width: 100%;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .timeline-item::before {
+      display: none;
+    }
+  }
+</style>
